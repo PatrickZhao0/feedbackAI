@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feedback AI</title>
+  </head>
+  <body>
+    <nav></nav>
+    <header>
+      <h1>📜 你的建議和意見 Your Feedback</h1>
+    </header>
+
+    <main>
+      <form action="{{ url_for('add_feedback') }}" method="POST">
+        <!-- Gender -->
+        <label for="gender">性別 Gender:</label><br />
+        <input type="radio" id="man" name="gender" value="0" required />
+        <label for="man">男 Man</label>
+        <input type="radio" id="woman" name="gender" value="1" required />
+        <label for="woman">女 Woman</label>
+        <input type="radio" id="non-binary" name="gender" value="2" required />
+        <label for="non-binary">非二元 Non-binary</label>
+        <br />
+
+        <!-- Race -->
+        <label for="race">種族 Ethnicity:</label><br />
+        <select id="race" name="race" required>
+          <option value="chinese">華人 Chinese</option>
+          <option value="philipino">菲律賓人 Philipino</option>
+          <option value="indonesian">印尼人 Indonesian</option>
+          <option value="indian">印度人 Indian</option>
+          <option value="others">其他 Others</option>
+        </select>
+        <br />
+
+        <!-- Disability -->
+        <label for="disability">殘疾或缺陷 Disability:</label><br />
+        <select id="disability" name="disability">
+          <option value="0">N/A</option>
+          <option value="1">
+            甲：肢體和感官殘疾 Type I: Physical and Sensory Disabilities
+          </option>
+          <option value="2">
+            乙：學習和發育障礙 Type II: Learning and Developmental Disabilities
+          </option>
+          <option value="3">丙：精神疾病 Type III: Mental Illnesses</option>
+        </select>
+        <br />
+
+        <!-- Neighborhood -->
+        <label for="neighborhood">區域 Neighborhood:</label><br />
+        <select id="neighborhood" name="neighborhood" required>
+          <option value="Central and Western">
+            中西區 Central and Western
+          </option>
+          <option value="Eastern">東區 Eastern</option>
+          <option value="Islands">離島區 Islands</option>
+          <option value="Kowloon City">九龍城區 Kowloon City</option>
+          <option value="Kwun Tong">觀塘區 Kwun Tong</option>
+          <option value="North">北區 North</option>
+          <option value="Sai Kung">西貢區 Sai Kung</option>
+          <option value="Sha Tin">沙田區 Sha Tin</option>
+          <option value="Sham Shui Po">深水埗區 Sham Shui Po</option>
+          <option value="Southern">南區 Southern</option>
+          <option value="Tai Po">大埔區 Tai Po</option>
+          <option value="Tsuen Wan">荃灣區 Tsuen Wan</option>
+          <option value="Tuen Mun">屯門區 Tuen Mun</option>
+          <option value="Wan Chai">灣仔區 Wan Chai</option>
+          <option value="Wong Tai Sin">黃大仙區 Wong Tai Sin</option>
+          <option value="Yau Tsim Mong">油尖旺區 Yau Tsim Mong</option>
+          <option value="Yuen Long">元朗區 Yuen Long</option>
+        </select>
+        <br />
+
+        <!-- Salary Month -->
+        <label for="salary_month">月薪水平 Monthly Salary:</label><br />
+        <select id="salary_month" name="salary_month" required>
+          <option value="lowIncome">Below HKD 10,000 港元以下</option>
+          <option value="workingClass">HKD 10,000 - 19,999 港元</option>
+          <option value="middleClass">HKD 20,000 - 39,999 港元</option>
+          <option value="upperMiddleClass">HKD 40,000 - 79,999 港元</option>
+          <option value="upperClass">HKD 80,000 and above 港元以上</option>
+        </select>
+        <br />
+
+        <!-- Complaint Facility -->
+        <label for="complaint_facility"
+          >市政設施的哪一方面最需要改進，應該如何改進？<br />
+          What areas of the facility need the most improvement, and how should
+          they be improved?
+        </label>
+        <br />
+        <textarea id="q2" name="feedback" rows="5"></textarea>
+        <br />
+        <!-- Submit Button -->
+        <button type="submit">提交 Submit</button>
+      </form>
+      <h2>{{message}}</h2>
+      <a href="{{ url_for('report') }}">查看最新報告 View Most Recent Report</a>
+    </main>
+  </body>
+</html>
