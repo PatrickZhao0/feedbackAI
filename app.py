@@ -23,7 +23,7 @@ def add_feedback():
     feedback['feedback']= translate_zh_to_en(feedback['feedback'])
     if(filter(feedback['feedback'])):
         feedbacks.insert_one(feedback)
-        message = "成功提交 Submitted Successfully"
+        message = "成功遞交 Submitted Successfully"
     else:
         message = "反饋未能成功識別 Could Not Detect Valid Feedback"
     return redirect(url_for("home", message=message))
@@ -50,4 +50,4 @@ def generate():
     for document in cursor:
         payload += str(document['feedback'])
     message = gen_report(payload)
-    return redirect(url_for("report", title="關於此群體之報告 Summative Report of This Particular Group" ,message=message))
+    return redirect(url_for("report", title="關於此群體之報告 Summative Report for This Particular Group" ,message=message))
